@@ -54,6 +54,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.main_activity_menu_item:
                 return true;
             case R.id.home_activity_menu_item:
+                Toast.makeText(this, "Too short!",Toast.LENGTH_SHORT).show();
                 Intent homeActivityIntent = new Intent(MainActivity.this, homePage.class);
                 startActivity(homeActivityIntent);
                 return true;
