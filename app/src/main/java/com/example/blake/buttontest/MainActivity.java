@@ -6,8 +6,12 @@
 package com.example.blake.buttontest;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +39,32 @@ public class MainActivity extends Activity implements View.OnClickListener {
         editTextPassword = findViewById(R.id.editTextPassword);
         //step 3b attach the listener to the object
         buttonLogin.setOnClickListener(this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater optionsMenuInflator = getMenuInflater();
+        optionsMenuInflator.inflate(R.menu.dropdown_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.main_activity_menu_item:
+                return true;
+            case R.id.home_activity_menu_item:
+                Intent homeActivityIntent = new Intent(MainActivity.this, homePage.class);
+                startActivity(homeActivityIntent);
+                return true;
+            case R.id.test_activity_menu_item:
+                Intent testActivityIntent = new Intent(MainActivity.this, test_Page.class);
+                startActivity(testActivityIntent);
+                return true;
+
+            default:
+                return true;
+        }
     }
 
     /**
